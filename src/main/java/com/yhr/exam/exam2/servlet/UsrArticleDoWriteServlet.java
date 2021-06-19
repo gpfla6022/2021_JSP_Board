@@ -1,6 +1,7 @@
-package com.yhr.exam.exam2;
+package com.yhr.exam.exam2.servlet;
 
 import java.io.IOException;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -8,20 +9,11 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 
-@WebServlet("/usr/home/main")
-public class UsrHomeMain extends HttpServlet {
+@WebServlet("/usr/article/doWrite")
+public class UsrArticleDoWriteServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-   
-    public UsrHomeMain() {
-        super();
-       
-    }
-
-	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) 
 			throws ServletException, IOException {
-	
-		String name = request.getParameter("name");
 		
 		// 들어오는 파라미터를 UTF-8로 해석
 		request.setCharacterEncoding("UTF-8");
@@ -32,13 +24,14 @@ public class UsrHomeMain extends HttpServlet {
 		//HTML이 UTF-8형식이라는 것을 브라우저에게 알린다.
 		response.setContentType("text/html; charset=UTF-8");
 		
-		response.getWriter().append("안녕");
-		response.getWriter().append(name);
+		String title = request.getParameter("title");
+		String body = request.getParameter("body");
+		
+
 	}
 
-	
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) 
+			throws ServletException, IOException {		
 		doGet(request, response);
 	}
 
