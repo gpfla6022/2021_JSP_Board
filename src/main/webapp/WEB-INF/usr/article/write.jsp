@@ -11,63 +11,81 @@
 <link
 	href="https://cdn.jsdelivr.net/npm/tailwindcss@2.1/dist/tailwind.min.css"
 	rel="stylesheet" type="text/css" />
+
 <link href="https://cdn.jsdelivr.net/npm/daisyui@1.4.0/dist/full.css"
 	rel="stylesheet" type="text/css" />
+
 <link rel="stylesheet"
 	href="${pageContext.request.contextPath}/resource/font.css" />
+
 <link rel="stylesheet"
 	href="${pageContext.request.contextPath}/resource/common.css" />
+
+<link rel="stylesheet"
+	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
 </head>
 <body>
 	<section class="section section-article-write px-4">
 		<div class="container mx-auto">
-			<script>
-				let ArticleWrite__submitDone =false;
-				function ArticleWrite__submit(form) {
-					
-					if( ArticleWrite__submitDone ){
-						return;
-					}
-					
-					if (form.title.value.length == 0) {
-						alert('제목을 입력해주세요.');
-						form.title.focus();
+			<div class="card bordered shadow-lg">
+				<div class="card-title">
+					<a href="javascript:history.back();" class="cursor-pointer">
+						<i class="fas fa-chevron-left"></i>
+					</a>
+					<span>게시물 상세페이지</span>
+				</div>
 
-						return;
-					}
-					if (form.body.value.length == 0) {
-						alert('내용을 입력해주세요.');
-						form.body.focus();
+				<div class ="px-4 py-4">
+					<script>
+						let ArticleWrite__submitDone = false;
+						function ArticleWrite__submit(form) {
 
-						return;
-					}
-					form.submit();
-					ArticleWrite__submitDone =true;
-				}
-			</script>
-			<form action="../article/doWrite" method="post"
-				onsubmit="ArticleWrite__submit(this); return false;">
-				<div class="form-control">
-					<label class="label">
-						<span class="label-text">제목</span>
-					</label>
-					<div>
-						<input class="input input-bordered w-full" type="text"
-							name="title" maxlength="100" placeholder="제목을 입력해주세요." />
-					</div>
+							if (ArticleWrite__submitDone) {
+								return;
+							}
+
+							if (form.title.value.length == 0) {
+								alert('제목을 입력해주세요.');
+								form.title.focus();
+
+								return;
+							}
+							if (form.body.value.length == 0) {
+								alert('내용을 입력해주세요.');
+								form.body.focus();
+
+								return;
+							}
+							form.submit();
+							ArticleWrite__submitDone = true;
+						}
+					</script>
+					<form action="../article/doWrite" method="post"
+						onsubmit="ArticleWrite__submit(this); return false;">
+						<div class="form-control">
+							<label class="label">
+								<span class="label-text">제목</span>
+							</label>
+							<div>
+								<input class="input input-bordered w-full" type="text"
+									name="title" maxlength="100" placeholder="제목을 입력해주세요." />
+							</div>
+						</div>
+						<div class="form-control">
+							<label class="label">
+								<span class="label-text">내용</span>
+							</label>
+							<textarea maxlength="2000"
+								class="textarea textarea-bordered h-60"
+								placeholder="내용을 입력해 주세요." name="body"></textarea>
+						</div>
+						<div class="btns">
+							<button type="submit" class="btn btn-ghost">작성</button>
+							<button type="button" class="btn btn-ghost">작성취소</button>
+						</div>
+					</form>
 				</div>
-				<div class="form-control">
-					<label class="label">
-						<span class="label-text">내용</span>
-					</label>
-					<textarea maxlength="2000" class="textarea textarea-bordered h-60"
-						placeholder="내용을 입력해 주세요." name="body"></textarea>
-				</div>
-				<div class="btns">
-					<button type="submit" class="btn btn-ghost">작성</button>
-					<button type="button" class="btn btn-ghost">작성취소</button>
-				</div>
-			</form>
+			</div>
 		</div>
 	</section>
 </body>
