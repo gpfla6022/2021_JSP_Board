@@ -34,7 +34,6 @@
 					</a>
 					<span>게시물 상세페이지</span>
 				</div>
-
 				<div class ="px-4 py-4">
 					<script>
 						let ArticleWrite__submitDone = false;
