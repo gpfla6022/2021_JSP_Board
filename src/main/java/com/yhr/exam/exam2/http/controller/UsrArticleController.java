@@ -5,14 +5,11 @@ import java.util.List;
 import com.yhr.exam.exam2.dto.Article;
 import com.yhr.exam.exam2.dto.ResultData;
 import com.yhr.exam.exam2.http.service.ArticleService;
+import com.yhr.exam2.container.Container;
 import com.yhr.exam2.http.Rq;
 
 public class UsrArticleController extends Controller {
-	private ArticleService articleService;
-
-	public UsrArticleController() {
-		articleService = new ArticleService();
-	}
+	private ArticleService articleService = Container.articleService;
 
 	@Override
 	public void performAction(Rq rq) {
