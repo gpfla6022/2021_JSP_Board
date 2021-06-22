@@ -26,12 +26,6 @@ public class DispatcherServlet extends HttpServlet {
 			rq.print("올바른 요청이 아닙니다.");
 		}
 		
-		rq.println("controllerTypeName : " + rq.getControllerTypeName());
-		rq.println("<br>");
-		rq.println("controllerName : " + rq.getControllerName());
-		rq.println("<br>");
-		rq.println("actionMethodName : " + rq.getActionMethodName());
-		
 		Controller controller = null;
 		
 		switch(rq.getControllerTypeName()) {
