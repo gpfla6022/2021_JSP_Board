@@ -8,6 +8,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.yhr.exam.exam2.http.controller.Controller;
+import com.yhr.exam.exam2.http.controller.UsrArticleController;
 import com.yhr.exam2.http.Rq;
 import com.yhr.mysqliutil.MysqlUtil;
 import com.yhr.mysqliutil.SecSql;
@@ -23,21 +25,38 @@ public class DispatcherServlet extends HttpServlet {
 		if (rq.isInvaild()) {
 			rq.print("올바른 요청이 아닙니다.");
 		}
-
+		
 		rq.println("controllerTypeName : " + rq.getControllerTypeName());
 		rq.println("<br>");
 		rq.println("controllerName : " + rq.getControllerName());
 		rq.println("<br>");
 		rq.println("actionMethodName : " + rq.getActionMethodName());
+		
+		Controller controller = null;
+		
+		switch(rq.getControllerTypeName()) {
+		case "usr":
+			switch(rq.getControllerName()) {
+			case "article":
+				controller = new UsrArticleController();
+			}
+			break;
+		}
+		
+		if(controller != null) {
+			
+			// DB연결
+			MysqlUtil.setDBInfo("localhost", "joy", "ful", "jsp_yhr_board");
 
-		// DB연결
-		MysqlUtil.setDBInfo("localhost", "joy", "ful", "jsp_yhr_board");
-
-		// 개발모드를 켬
-		MysqlUtil.setDevMode(true);
-
-		// DB연결 종료
-		MysqlUtil.closeConnection();
+			// 개발모드를 켬
+			MysqlUtil.setDevMode(true);
+			
+			controller.performAction(rq);
+			
+			// DB연결 종료
+			MysqlUtil.closeConnection();
+		}
+		
 	}
 
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
