@@ -12,49 +12,40 @@ import com.yhr.exam.exam2.http.controller.Controller;
 import com.yhr.exam.exam2.http.controller.UsrArticleController;
 import com.yhr.exam2.http.Rq;
 import com.yhr.mysqliutil.MysqlUtil;
-import com.yhr.mysqliutil.SecSql;
 
 @WebServlet("/usr/*")
 public class DispatcherServlet extends HttpServlet {
-	private static final long serialVersionUID = 1L;
-
-	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-
+	protected void doGet(HttpServletRequest req, HttpServletResponse resp) {
 		Rq rq = new Rq(req, resp);
 
-		if (rq.isInvaild()) {
+		if (rq.isInvalid()) {
 			rq.print("올바른 요청이 아닙니다.");
 		}
-		
+
 		Controller controller = null;
-		
-		switch(rq.getControllerTypeName()) {
+
+		switch (rq.getControllerTypeName()) {
 		case "usr":
-			switch(rq.getControllerName()) {
+			switch (rq.getControllerName()) {
 			case "article":
 				controller = new UsrArticleController();
+				break;
 			}
+
 			break;
 		}
-		
-		if(controller != null) {
-			
-			// DB연결
-			MysqlUtil.setDBInfo("localhost", "joy", "ful", "jsp_yhr_board");
 
-			// 개발모드를 켬
+		if (controller != null) {
+			MysqlUtil.setDBInfo("localhost", "joy", "ful", "jsp_yhr_board");
 			MysqlUtil.setDevMode(true);
-			
+
 			controller.performAction(rq);
-			
-			// DB연결 종료
+
 			MysqlUtil.closeConnection();
 		}
-		
 	}
 
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		doGet(req, resp);
 	}
-
 }
