@@ -2,12 +2,14 @@ package com.yhr.exam2.http;
 
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;
+import java.util.List;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.yhr.exam.exam2.dto.Article;
 import com.yhr.exam.exam2.util.Ut;
 
 import lombok.Getter;
@@ -112,5 +114,19 @@ public class Rq {
         println("history.back();");
         println("</script>");
     }
+
+
+
+	public void println(Object obj) {
+		println(obj.toString());
+		
+	}
+
+
+
+	public void setAttr(String attrName, Object attrValue) {
+		req.setAttribute(attrName, attrValue);
+		
+	}
 
 }
