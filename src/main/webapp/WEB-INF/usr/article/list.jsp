@@ -13,19 +13,21 @@
 				</a>
 				<span>게시물 리스트</span>
 			</div>
-			<div class="px-4 py-4">
+			<div class="px-4">
 				<c:forEach items="${articles}" var="article">
-					<div>
-						<a class="hover:underline cursor-printer block">
-							<span class="badge badge-outline">제목</span>
-							<div class="lime-clamp-3">${article.titleForPrint}</div>
-						</a>
-						<div
-							class="mt-3 grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-3">
-							<a href="#" class="row-span-7">
-								<img class="rounded-full" src="https://i.pravatar.cc/200?img=37"
-									alt="">
+					<div class="py-4">
+						<div class="grid gap-3" style="grid-template-columns: 100px 1fr;">
+							<a href="#">
+								<img class="rounded-full w-full"
+									src="https://i.pravatar.cc/200?img=37" alt="" />
 							</a>
+
+							<a class="hover:underline cursor-printer">
+								<span class="badge badge-outline">제목</span>
+								<div class="lime-clamp-3">${article.titleForPrint}</div>
+							</a>
+						</div>
+						<div class="mt-3 grid sm:grid-cols-2 lg:grid-cols-4 gap-3">
 
 							<a href="#" class="hover:underline">
 								<span class="badge badge-primary">번호</span>
@@ -46,26 +48,19 @@
 								<span class="badge">수정날짜</span>
 								<span class="text-gray-600 text-light">${article.updateDate}</span>
 							</a>
-
-							<a
-								class="mt-3 hover:underline cursor-pointer col-span-1 sm:col-span-2 xl:col-span-3">
-								<span class="badge badge-outline">본문</span>
-
-								<div class="mt-2">
-									<img class="rounded" src="https://picsum.photos/id/237/300/300"
-										alt="" />
-								</div>
-
-								<div class="line-clamp-3">${article.bodySummaryForPrint}</div>
-							</a>
 						</div>
-						<!--
-						번호 : ${article.id}<br>
-						작성일 : ${article.regDate}<br>
-						수정일 : ${article.updateDate}<br>
-						제목 : ${article.title}<br>
-						내용 : ${article.body}<br>
-						-->
+
+						<a
+							class="mt-3 hover:underline cursor-pointer col-span-1 sm:col-span-2 xl:col-span-3">
+							<span class="badge badge-outline">본문</span>
+
+							<div class="mt-2">
+								<img class="rounded" src="https://picsum.photos/id/237/300/300"
+									alt="" />
+							</div>
+
+							<div class="line-clamp-3">${article.bodySummaryForPrint}</div>
+						</a>
 					</div>
 					<br>
 				</c:forEach>
