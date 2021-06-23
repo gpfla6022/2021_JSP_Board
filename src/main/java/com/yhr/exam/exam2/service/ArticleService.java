@@ -1,10 +1,10 @@
-package com.yhr.exam.exam2.http.service;
+package com.yhr.exam.exam2.service;
 
 import java.util.List;
 
 import com.yhr.exam.exam2.dto.Article;
 import com.yhr.exam.exam2.dto.ResultData;
-import com.yhr.exam.exam2.http.repository.ArticleRepository;
+import com.yhr.exam.exam2.repository.ArticleRepository;
 import com.yhr.exam.exam2.util.Ut;
 import com.yhr.exam2.container.Container;
 

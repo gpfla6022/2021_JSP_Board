@@ -4,7 +4,7 @@ import java.util.List;
 
 import com.yhr.exam.exam2.dto.Article;
 import com.yhr.exam.exam2.dto.ResultData;
-import com.yhr.exam.exam2.http.service.ArticleService;
+import com.yhr.exam.exam2.service.ArticleService;
 import com.yhr.exam2.container.Container;
 import com.yhr.exam2.http.Rq;
 
