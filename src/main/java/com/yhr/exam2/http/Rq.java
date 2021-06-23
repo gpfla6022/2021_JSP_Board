@@ -111,7 +111,7 @@ public class Rq {
     public void historyBack(String msg) {
         println("<script>");
         printf("alert('%s')\n;", msg );
-        println("history.back();");
+        printf("history.back();");
         println("</script>");
     }
 
@@ -126,6 +126,16 @@ public class Rq {
 
 	public void setAttr(String attrName, Object attrValue) {
 		req.setAttribute(attrName, attrValue);
+		
+	}
+
+
+
+	public void replace(String msg, String redirectUri) {
+		println("<script>");
+        printf("alert('%s')\n;", msg );
+        printf("location.replace('%s');\n", redirectUri);
+        println("</script>");
 		
 	}
 
