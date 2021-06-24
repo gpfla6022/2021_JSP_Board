@@ -4,7 +4,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <c:set var="pageTitle" value="게시물 리스트" />
 <%@ include file="../part/head.jspf"%>
-<section class="section section-article-write px-4">
+<section class="section section-article-list px-4">
 	<div class="container mx-auto">
 		<div class="card bordered shadow-lg">
 			<div class="card-title">
@@ -15,7 +15,7 @@
 			</div>
 			<div class="px-4">
 				<c:forEach items="${articles}" var="article">
-					<c:set var="detailUri" value="../detail?id=${article.id}"/>
+					<c:set var="detailUri" value="../article/detail?id=${article.id}"/>
 				
 					<div class="py-4">
 						<div class="grid gap-3" style="grid-template-columns: 100px 1fr;">

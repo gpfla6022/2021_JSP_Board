@@ -17,6 +17,9 @@ public class UsrArticleController extends Controller {
 		case "list":
 			actionShowList(rq);
 			break;
+		case "detail":
+			actionDetailList(rq);
+			break;
 		case "write":
 			actionShowWrite(rq);
 			break;
@@ -29,11 +32,28 @@ public class UsrArticleController extends Controller {
 		}
 	}
 
+	private void actionDetailList(Rq rq) {
+		int id = rq.getIntParam("id", 0);
+
+		if (id == 0) {
+			rq.historyBack("id를 입력해주세요.");
+			return;
+		}
+
+		
+		Article article = articleService.getForPrintArticleById(id);
+
+		rq.setAttr("article", article);
+
+		rq.jsp("usr/article/detail");
+
+	}
+
 	private void actionShowList(Rq rq) {
 		List<Article> articles = articleService.getForPrintArticles();
-		
+
 		rq.setAttr("articles", articles);
-		
+
 		rq.jsp("usr/article/list");
 	}
 
@@ -53,12 +73,12 @@ public class UsrArticleController extends Controller {
 		}
 
 		ResultData writeRd = articleService.write(title, body);
-		int id = (int)writeRd.getBody().get("id");
-		
+		int id = (int) writeRd.getBody().get("id");
+
 		redirectUri = redirectUri.replace("[NEW_ID]", id + "");
-		
+
 		rq.replace(writeRd.getMsg(), redirectUri);
-		
+
 	}
 
 	private void actionShowWrite(Rq rq) {
