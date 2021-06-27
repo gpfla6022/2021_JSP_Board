@@ -25,4 +25,53 @@
 	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
 </head>
 <body>
-
+<header class="top-bar h-20">
+	<div class="h-full container mx-auto flex">
+		<a href = "/" class="top-bar__logo flex items-center px-4">
+			<span><i class="fas fa-fish"></i></span>
+			&nbsp;
+			<span>fisherman</span>
+		</a>
+			<div class="flex-grow"></div>
+		
+			<nav class="top-bar__menu-box-1">
+				<ul class="flex h-full">
+					<li>
+						<a href="#" class="h-full flex items-center px-4">
+							<span><i class="fas fa-home"></i></span>
+							&nbsp;
+							<span>HOME</span>
+						</a>
+					</li>
+					<li>
+						<a href="#" class="h-full flex items-center px-4">
+							<span><i class="fas fa-bullhorn"></i></span>
+							&nbsp;
+							<span>NOTICE LIST</span>
+						</a>
+					</li>
+					<li>
+						<a href="#" class="h-full flex items-center px-4">
+							<span><i class="far fa-comments"></i></span>
+							&nbsp;
+							<span>FREE LIST</span>
+						</a>
+					</li>
+					<li>
+						<a href="#" class="h-full flex items-center px-4">
+							<span><i class="fas fa-sign-in-alt"></i></span>
+							&nbsp;
+							<span>LOGIN</span>
+						</a>
+					</li>
+					<li>
+						<a href="#" class="h-full flex items-center px-4">
+							<span><i class="fas fa-user-plus"></i></span>
+							&nbsp;
+							<span>JOIN</span>
+						</a>
+					</li>
+				</ul>
+			</nav>
+	</div>
+</header>
